@@ -10,7 +10,7 @@ http://localhost:3000/api
 
 This API is documented with Swagger, it can be found in the endpoint:
 
-- # /docs
+- /docs
 
 For restaurant CRUD operations, these are the endpoints:
 
