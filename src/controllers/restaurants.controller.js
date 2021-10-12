@@ -11,6 +11,7 @@ const getRestaurants = async (req, res) => {
         res.status(200).json(data.rows);
     }
     catch(e){
+        console.log(e.toString())
         res.status(400).json({msg:'Something went wrong'})
     }
 }
@@ -27,6 +28,7 @@ const getRestaurant = async (req, res) => {
         res.status(200).json(data.rows);
     }
     catch(e){
+        console.log(e.toString())
         res.status(400).json({msg:'Something went wrong'})
     }
 }
@@ -100,6 +102,7 @@ const deleteRestaurant = async (req, res) => {
         res.status(200).json({msg:`Restaurant with id ${id} deleted successfully`});
     }
     catch(e){
+        console.log(e.toString())
         res.status(400).json({msg:'Something went wrong'})
     }
 }
