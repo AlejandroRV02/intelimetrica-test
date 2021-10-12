@@ -4,6 +4,7 @@ const {v4:uuidv4} = require('uuid');
 const getRestaurants = async (req, res) => {
     
     try{
+
         const query = 'SELECT * FROM restaurants';
 
         const data = await pool.query(query);
@@ -11,8 +12,10 @@ const getRestaurants = async (req, res) => {
         res.status(200).json(data.rows);
     }
     catch(e){
-        console.log(e.toString())
+        console.log(e)
         res.status(400).json({msg:'Something went wrong'})
+    }
+    finally{
     }
 }
 const getRestaurant = async (req, res) => {
