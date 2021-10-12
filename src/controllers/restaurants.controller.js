@@ -1,4 +1,5 @@
 const pool = require('../config/database');
+const {v4:uuidv4} = require('uuid');
 
 const getRestaurants = async (req, res) => {
     
@@ -20,6 +21,8 @@ const getRestaurant = async (req, res) => {
         const query = `SELECT * FROM restaurants WHERE id='${id}'`;
 
         const data = await pool.query(query);
+
+        if (data.rowCount === 0) return res.status(404).json({msg:'Restaurant not found'});
         
         res.status(200).json(data.rows);
     }
@@ -29,17 +32,30 @@ const getRestaurant = async (req, res) => {
 }
 const createRestaurant = async (req, res) => {
     try{
+        let existingRestaurant = true;
+        let id = '';
 
-        const {id,rating ,name ,site ,email ,phone ,street ,city ,state ,lat, lng } = req.body;
-        
-        const query = `INSERT INTO restaurants VALUES('${id}',${rating},'${name}','${site}','${email}','${phone}','${street}','${city}','${state}',${lat},${lng})`;
+        while(existingRestaurant){
+            id = uuidv4();
+            
+            let query = `SELECT * FROM restaurants WHERE id='${id}'`;
+            
+            let data = await pool.query(query);
 
-        const data = await pool.query(query);
+            if (data.rowCount === 0) existingRestaurant = false; 
+        }
+
+        const {rating ,name ,site ,email ,phone ,street ,city ,state ,lat, lng } = req.body;
         
-        res.status(201).json({msg:'User created successfully', data});
+        query = `INSERT INTO restaurants VALUES('${id}',${rating},'${name}','${site}','${email}','${phone}','${street}','${city}','${state}',${lat},${lng})`;
+
+        await pool.query(query);
+        
+        res.status(201).json({msg:'Restaurant created successfully'});
 
     }
     catch(e){
+        console.log(e.toString())
         res.status(400).json({msg:'Something went wrong'})
     }
 }
@@ -68,11 +84,19 @@ const updateRestaurant = async (req, res) => {
     }
 }
 const deleteRestaurant = async (req, res) => {
-    
     try{
-        const {id} = req.params;
-        const query = `DELETE FROM restaurants WHERE id='${id}'`;
+        const {id} = req.params
+        
+        let query = `SELECT * FROM restaurants WHERE id='${id}'`;
+
+        const data = await pool.query(query);
+
+        if (data.rowCount === 0) return res.status(404).json({msg:'Restaurant not found'});
+
+        query = `DELETE FROM restaurants WHERE id='${id}'`;
+        
         await pool.query(query)
+        
         res.status(200).json({msg:`Restaurant with id ${id} deleted successfully`});
     }
     catch(e){
