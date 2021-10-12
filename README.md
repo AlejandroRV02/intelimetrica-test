@@ -6,7 +6,7 @@ This API is made by Melp to provide useful information about restaurants to user
 
 It has the following nomenclature:
 
-http://localhost:3000/*api*
+http://localhost:3000/*api
 
 This API is documented with Swagger, it can be found in the endpoint:
 
