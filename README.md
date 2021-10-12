@@ -14,8 +14,8 @@ This API is documented with Swagger, it can be found in the endpoint:
 
 For restaurant CRUD operations, these are the endpoints:
 
-- # GET /restaurants
-- # GET /restaurants/{id}
-- # POST /restaurants
-- # PUT /restaurants/{id}
-- # DELETE /restaurants/{id}
+- GET /restaurants
+- GET /restaurants/{id}
+- POST /restaurants
+- PUT /restaurants/{id}
+- DELETE /restaurants/{id}
