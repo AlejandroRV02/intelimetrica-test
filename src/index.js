@@ -16,7 +16,7 @@ const swaggerConf = {
         },
         servers: [
             {
-                url: "http://https://restapi-flask-intelimetrica.herokuapp.com"
+                url: "https://restapi-flask-intelimetrica.herokuapp.com"
             }
         ]
     },
