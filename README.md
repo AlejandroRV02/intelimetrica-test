@@ -33,3 +33,4 @@ Post Man Collection: https://www.getpostman.com/collections/2044b0d4fee1d0776bf8
 # Tools
 
 This API was made using the Node.js framework Express.js.
+The database used is PostreSQL, the intention was to use PostGIS, but it was not used.
