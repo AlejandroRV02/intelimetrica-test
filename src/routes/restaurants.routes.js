@@ -158,7 +158,7 @@ router.post('/', createRestaurant)
  *          application/json:
  *              schema:
  *                  type: object
- *                  $ref: '#/components/schemas/RestaurantNoId'
+ *                  $ref: '#/components/schemas/Restaurant'
  *    responses:
  *      200:
  *          description: Restaurant updated successfully
@@ -182,7 +182,6 @@ router.put('/:id', updateRestaurant)
  *        required: true
  *        schema:
  *          type: string
- *          $ref: '#/components/schemas/Restaurant'
  *    responses:
  *      200:
  *          description: Restaurant deleted successfully
