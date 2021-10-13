@@ -181,7 +181,8 @@ router.put('/:id', updateRestaurant)
  *        description: Unique identifier of a restaurant
  *        required: true
  *        schema:
- *          type: string 
+ *          type: string
+ *          $ref: '#/components/schemas/Restaurant'
  *    responses:
  *      200:
  *          description: Restaurant deleted successfully
