@@ -41,7 +41,6 @@ const getRestaurantById = async (req, res) => {
         res.status(200).json(data.rows);
     }
     catch(e){
-        console.log(e.toString())
         res.status(400).json({msg:'Something went wrong'})
     }
 }
