@@ -1,6 +1,8 @@
 const pool = require('../config/database');
 const {v4:uuidv4} = require('uuid');
 
+const {getPointsInside, getRestaurantById} = require('../utils/utils')
+
 const getRestaurants = async (req, res) => {
     
     try{
@@ -15,24 +17,17 @@ const getRestaurants = async (req, res) => {
         console.log(e)
         res.status(400).json({msg:'Something went wrong'})
     }
-    finally{
-    }
 }
+
 const getRestaurant = async (req, res) => {
-    try{
-        const {id} = req.params
-        
-        const query = `SELECT * FROM restaurants WHERE id='${id}'`;
 
-        const data = await pool.query(query);
-
-        if (data.rowCount === 0) return res.status(404).json({msg:'Restaurant not found'});
-        
-        res.status(200).json(data.rows);
+    const {latitude, longitude, radius} = req.query
+    
+    if (latitude && longitude && radius){
+        getPointsInside(parseFloat(latitude), parseFloat(longitude), parseFloat(radius), req, res);
     }
-    catch(e){
-        console.log(e.toString())
-        res.status(400).json({msg:'Something went wrong'})
+    else{
+        getRestaurantById(req, res);
     }
 }
 const createRestaurant = async (req, res) => {
@@ -110,10 +105,11 @@ const deleteRestaurant = async (req, res) => {
     }
 }
 
+
 module.exports = {
     getRestaurants,
     getRestaurant,
     createRestaurant,
     updateRestaurant,
-    deleteRestaurant
+    deleteRestaurant,
 }

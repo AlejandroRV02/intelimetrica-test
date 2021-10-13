@@ -77,16 +77,35 @@ router.get('/', getRestaurants)
 // Get a restaurant by id
 /**
  * @swagger
- * /api/restaurants/{id}:
+ * /api/restaurants/{id} || /api/restaurants/statistics?latitude=xxx&longitude=yyy&radius=zzz:
  *  get:
- *    summary: Get a restaurant by id
+ *    summary : This endpoint can get a restaurant by id or get the statistics giving latitude, longitude and radius.
+ *    
  *    parameters: 
  *      - in: path
  *        name: id
  *        description: Unique identifier of a restaurant
  *        required: true
  *        schema:
- *          type: string 
+ *          type: string
+ *      - in: query
+ *        name: latitude
+ *        description: latitude given to get a point
+ *        required: true
+ *        schema:
+ *          type: string
+ *      - in: query
+ *        name: longitude
+ *        description: longitude given to get a point
+ *        required: true
+ *        schema:
+ *          type: string
+ *      - in: query
+ *        name: radius
+ *        description: radius given to get a circunference
+ *        required: true
+ *        schema:
+ *          type: string
  *    responses:
  *      200:
  *          description: Query executed successfully
