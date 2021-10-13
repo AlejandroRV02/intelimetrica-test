@@ -91,19 +91,16 @@ router.get('/', getRestaurants)
  *      - in: query
  *        name: latitude
  *        description: latitude given to get a point
- *        required: true
  *        schema:
  *          type: string
  *      - in: query
  *        name: longitude
  *        description: longitude given to get a point
- *        required: true
  *        schema:
  *          type: string
  *      - in: query
  *        name: radius
  *        description: radius given to get a circunference
- *        required: true
  *        schema:
  *          type: string
  *    responses:
