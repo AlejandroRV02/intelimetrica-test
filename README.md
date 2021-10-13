@@ -24,3 +24,12 @@ For restaurant CRUD operations, these are the endpoints:
 - GET /restaurants/statistics?latitude=19.43278271&longitude=-99.13955183&radius=202.0421507
 
 ** If an id is given, it retrieves a restaurant if the id exists. To get the statistics is necessary to give the parameters preceded by the world 'statistics'. Example: /api/restaurant/statistics?latitude=19.43278271&longitude=-99.13955183&radius=202.0421507
+
+Live Demo: https://restapi-flask-intelimetrica.herokuapp.com
+Post Man Collection: https://www.getpostman.com/collections/2044b0d4fee1d0776bf8
+
+** Clarification: Even though the app name indicates that the API was build using Flask, it was not.
+
+# Tools
+
+This API was made using the Node.js framework Express.js.
