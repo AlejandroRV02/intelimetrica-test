@@ -30,7 +30,7 @@ Post Man Collection: https://www.getpostman.com/collections/2044b0d4fee1d0776bf8
 
 ** Clarification: Even though the app name indicates that the API was build using Flask, it was not.
 
-FINAL NOTE: If the API is tested from /api/docs, apparently this endpoint there's conflict, but if is testes from the Post Man collection or even from the browser there's no problem.
+FINAL NOTE: If the API is tested from /api/docs, apparently this endpoint GET /restaurants/{id} has conflict, but if is tested from the Post Man collection or even from the browser there's no problem.
 
 # Tools
 
